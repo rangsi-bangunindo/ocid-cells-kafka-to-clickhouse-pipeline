@@ -56,37 +56,14 @@ services:
       - kafka-net
 
   transformer:
-    build: ./services/transformer
+    build:
+      context: .
+      dockerfile: services/transformer/Dockerfile
     container_name: transformer
     env_file:
       - .env
     depends_on:
       - kafka
-    networks:
-      - kafka-net
-
-  consumer:
-    build: ./services/consumer
-    container_name: consumer
-    env_file:
-      - .env
-    depends_on:
-      - kafka
-      - transformer
-    networks:
-      - kafka-net
-
-  clickhouse:
-    image: clickhouse/clickhouse-server:23.8
-    container_name: clickhouse
-    ports:
-      - "${CLICKHOUSE_PORT}:8123"
-    environment:
-      CLICKHOUSE_DB: ${CLICKHOUSE_DB}
-      CLICKHOUSE_USER: ${CLICKHOUSE_USER}
-      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
-    volumes:
-      - ./services/clickhouse/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - kafka-net
 
