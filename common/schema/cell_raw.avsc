@@ -1,0 +1,21 @@
+{
+  "type": "record",
+  "name": "CellTowerRaw",
+  "namespace": "com.opencellid",
+  "fields": [
+    { "name": "radio", "type": "string" },
+    { "name": "mcc", "type": "int" },
+    { "name": "net", "type": "int" },
+    { "name": "area", "type": "int" },
+    { "name": "cell", "type": "int" },
+    { "name": "unit", "type": "int" },
+    { "name": "lon", "type": "double" },
+    { "name": "lat", "type": "double" },
+    { "name": "range", "type": "int" },
+    { "name": "samples", "type": "int" },
+    { "name": "changeable", "type": "int" },
+    { "name": "created", "type": "long" },
+    { "name": "updated", "type": "long" },
+    { "name": "averageSignal", "type": "int" }
+  ]
+}
