@@ -196,3 +196,16 @@ docker-compose down
 - `producer` batch size and speed can be tuned in `.env` (`PRODUCER_BATCH_SIZE`, `TIME_SPEEDUP`).
 - Make sure your `.env` file matches `.env.example`.
 - To add more consumers, extend `services/consumer/`.
+
+---
+
+## Screenshots
+
+### Kafka Brokers
+<img width="1644" height="350" alt="kafka_ui__brokers" src="https://github.com/user-attachments/assets/f70315a5-f3f9-4eb9-a8de-a6b2b46e84ca" />
+
+### Kafka Topics
+<img width="1644" height="416" alt="kafka_ui__topics" src="https://github.com/user-attachments/assets/25493d07-06e1-410e-9be5-7f2b9e29adc6" />
+
+### Kafka Consumers
+<img width="1644" height="236" alt="kafka_ui__consumers" src="https://github.com/user-attachments/assets/f13fc53d-d13c-4558-b291-a51f7fddf387" />
