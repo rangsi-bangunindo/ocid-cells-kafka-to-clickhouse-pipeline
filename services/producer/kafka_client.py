@@ -1,4 +1,3 @@
-import json
 import time
 import socket
 from kafka import KafkaProducer, errors
@@ -6,7 +5,7 @@ from common.config.config import config
 
 def get_kafka_producer(max_retries=5, retry_interval=5):
     """
-    Returns a Kafka producer instance configured for JSON messages
+    Returns a Kafka producer instance configured for Avro (raw bytes) messages
     with retries until Kafka broker is available.
     """
 
@@ -23,7 +22,9 @@ def get_kafka_producer(max_retries=5, retry_interval=5):
         try:
             producer = KafkaProducer(
                 bootstrap_servers=[config["KAFKA_BROKER"]],
-                value_serializer=lambda v: json.dumps(v).encode('utf-8'),
+                # Avro values are already serialized into bytes
+                value_serializer=lambda v: v,
+                # Keys are strings → encode to bytes
                 key_serializer=str.encode,
                 linger_ms=10,
                 acks='all',
